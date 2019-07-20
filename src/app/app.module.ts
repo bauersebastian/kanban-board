@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { MatToolbarModule, MatIconModule, MatButtonModule, MatGridListModule, Ma
 import { ModuleRowComponent } from './module-row/module-row.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { ProcessColumnComponent } from './process-column/process-column.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import {MatSelectModule} from '@angular/material/select';
     TaskDetailsComponent,
     ColumnDetailsComponent,
     ModuleDetailsComponent,
-    ModuleRowComponent
+    ModuleRowComponent,
+    ProcessColumnComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     MatToolbarModule,
