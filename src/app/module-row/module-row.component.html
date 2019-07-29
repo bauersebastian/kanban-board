@@ -1,0 +1,35 @@
+<mat-grid-list cols="{{columnLength}}" rowHeight="{{heightOfRow}}px">
+  <mat-grid-tile class="content-left">
+    <button mat-button (click)="deleteModule(module._id)">
+      <mat-icon aria-hidden="false" aria-label="Delete Module" color="warn">clear</mat-icon>
+    </button>
+    {{module.name}}
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="tasks.length == 0">
+    Keine Aufgaben in diesem Modul
+  </mat-grid-tile>
+  <ng-container *ngIf="tasks.length">
+  <mat-grid-tile *ngFor="let column of columns">
+    <mat-list>
+      <ng-container *ngFor="let task of tasks">
+        <mat-list-item *ngIf="task.column == column._id" class="kanban-item">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{task.name}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions>
+              <a routerLink="/task/{{task._id}}" mat-button>
+                <mat-icon aria-hidden="false" aria-label="Edit Task" color="primary">edit</mat-icon>
+              </a>
+              <button mat-button (click)="deleteTask(task._id)">
+                <mat-icon aria-hidden="false" aria-label="Delete Task" color="warn">delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
+  </mat-grid-tile>
+  </ng-container>
+</mat-grid-list>
+<mat-divider></mat-divider>

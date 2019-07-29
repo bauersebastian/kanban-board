@@ -1,0 +1,38 @@
+<form (ngSubmit)="save()" class="input-form" #taskForm="ngForm">
+  <mat-form-field class="input-full-width">
+    <input type="text" [(ngModel)]="formData.name" matInput placeholder="Name der Aufgabe" name="name" required #name="ngModel">
+  </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <textarea [(ngModel)]="formData.description" matInput placeholder="Beschreibung der Aufgabe" name="description" required #description="ngModel"></textarea>
+  </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <mat-label>Modul</mat-label>
+    <mat-select [(ngModel)]="formData.module" name="module" required #module="ngModel">
+      <mat-option *ngFor="let module of modules" [value]="module">
+        {{module.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <mat-label>Prozessschritt</mat-label>
+    <mat-select [(ngModel)]="formData.column" name="column" required #column="ngModel">
+      <mat-option *ngFor="let column of columns" [value]="column">
+        {{column.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="!taskForm.form.valid">Speichern</button>
+</form>
+
+<div [hidden]="name.valid || name.pristine">
+  <p><mat-icon>arrow_forward</mat-icon>  Name ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>
+<div [hidden]="description.valid || description.pristine">
+  <p><mat-icon>arrow_forward</mat-icon> Beschreibung der Aufgabe ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>
+<div [hidden]="module.valid || module.pristine">
+  <p>Modul ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>
+<div [hidden]="column.valid || column.pristine">
+  <p>Prozessschritt ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>

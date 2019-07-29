@@ -1,0 +1,28 @@
+<mat-grid-list cols="{{columnLength}}" rowHeight="3:1">
+  <div *ngIf="columns.length == 0">
+    <p>Es existieren noch keine Prozessschritte!</p>
+    <p>Lege zum Starten der App <a routerLink="../column-add">einen Prozessschritt an</a></p>
+  </div>
+  <mat-grid-tile *ngIf="columns.length">Module <a mat-button routerLink="../module-add"><mat-icon aria-hidden="false" aria-label="Add module">add</mat-icon></a></mat-grid-tile>
+  <mat-grid-tile *ngFor="let column of columns">
+    {{column.name}}
+    <button mat-button (click)="deleteColumn(column._id)">
+      <mat-icon aria-hidden="false" aria-label="Delete Column" color="warn">clear</mat-icon>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-divider></mat-divider>
+<div *ngIf="modules.length == 0">
+  <p>Es wurden noch keine Module angelegt.</p>
+</div>
+<ng-container *ngIf="modules.length">
+  <kb-module-row
+    *ngFor="let module of modules"
+    [module]="module"
+    [tasks]="getTaskByModule(module)"
+    [columns]="columns"
+    [columnLength]="columnLength"
+    (taskToDelete)="deleteTask($event)"
+    (moduleToDelete)="deleteModule($event)">
+  </kb-module-row>
+</ng-container>

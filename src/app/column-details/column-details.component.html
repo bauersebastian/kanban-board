@@ -1,0 +1,17 @@
+<form (ngSubmit)="saveColumn()" class="input-form" #columnForm="ngForm">
+  <mat-form-field class="input-full-width">
+    <input [(ngModel)]="formData.name" type="text" matInput placeholder="Name des Prozessschrittes" name="name" required #name="ngModel">
+  </mat-form-field>
+  <mat-form-field class="input-full-width">
+    <input [(ngModel)]="formData.limit" type="number" matInput placeholder="Limit" name="limit" required #limit="ngModel">
+    <mat-hint>Maximale Anzahl an Aufgaben pro Prozessschritt</mat-hint>
+  </mat-form-field>
+  <button type="submit" class="margin-top" mat-raised-button color="primary" [disabled]="!columnForm.form.valid">Speichern</button>
+</form>
+
+<div [hidden]="name.valid || name.pristine">
+  <p><mat-icon>arrow_forward</mat-icon> Name ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>
+<div [hidden]="limit.valid || limit.pristine">
+  <p><mat-icon>arrow_forward</mat-icon> Das Limit an Aufgaben ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>

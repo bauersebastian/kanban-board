@@ -1,0 +1,10 @@
+<form (ngSubmit)="saveModule()" class="input-form" #moduleForm="ngForm">
+  <mat-form-field class="input-full-width">
+    <input [(ngModel)]="formData.name" type="text" matInput placeholder="Name des Moduls" name="name" required #name="ngModel">
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" [disabled]="!moduleForm.form.valid">Speichern</button>
+</form>
+
+<div [hidden]="name.valid || name.pristine">
+  <p><mat-icon>arrow_forward</mat-icon> Name ist eine Pflichtangabe - bitte eingeben, sonst Speicherung nicht möglich</p>
+</div>
