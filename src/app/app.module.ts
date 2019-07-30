@@ -11,7 +11,7 @@ import { ColumnDetailsComponent } from './column-details/column-details.componen
 import { ModuleDetailsComponent } from './module-details/module-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatToolbarModule, MatIconModule, MatButtonModule, MatGridListModule, MatDividerModule, MatCardModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSnackBarModule, MatButtonModule, MatGridListModule, MatDividerModule, MatCardModule, MatListModule } from '@angular/material';
 import { ModuleRowComponent } from './module-row/module-row.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -40,7 +40,9 @@ import { ProcessColumnComponent } from './process-column/process-column.componen
     MatDividerModule,
     MatCardModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

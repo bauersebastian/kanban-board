@@ -12,3 +12,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .input-full-width {
   width: 100%;
 }
+#app_title {
+  color: #fff;
+  text-decoration: none;
+}
+.content-left.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+}
