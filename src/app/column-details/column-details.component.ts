@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./column-details.component.css']
 })
 export class ColumnDetailsComponent implements OnInit {
+  // initialise the form with some data
   formData = {
     name: '',
     limit: 0
@@ -21,12 +22,13 @@ export class ColumnDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // save a new column
   saveColumn() {
     this.columnService
       .add(this.formData)
       .subscribe(column => {
-        console.log('Speichern von Spalte erledigt');
+        console.log('Speichern von Spalte erfolgt');
+        // go back to the KanbanBoard
         this.router.navigate(['../'], { relativeTo: this.route });
       });
   }

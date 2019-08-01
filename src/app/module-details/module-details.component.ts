@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./module-details.component.css']
 })
 export class ModuleDetailsComponent implements OnInit {
+  // initialise the form data
   formData = {
     name: ''
   };
@@ -20,11 +21,13 @@ export class ModuleDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
+  // save a new module
   saveModule() {
     this.moduleService
       .addModule(this.formData)
       .subscribe(module => {
-        console.log('Speichern erledigt');
+        console.log('Speichern des Moduls erledigt');
+        // go back to the KanbanBoard
         this.router.navigate(['../'], { relativeTo: this.route });
       });
   }

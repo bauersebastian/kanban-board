@@ -159,14 +159,18 @@ export class TaskDetailsComponent implements OnInit {
       return true;
     } else { return false; }
   }
-
   getAllModules() {
     this.ms.getAll()
       .subscribe(response => {
         this.modules = response;
+        if (this.modules.length === 0) {
+          this.errorMessage = 'Keine Module vorhanden, bitte zuerst anlegen.';
+          this.openSnack();
+          this.formData.module = undefined;
+        }
         // make sure to fill the module in the form if we an have exisiting task
         // it may happen, that getSingleTask is finished before getAllColumns
-        if (this.existingTaskResponse.module !== undefined && this.formData.module === undefined) {
+        if (this.existingTask === true && this.existingTaskResponse.module !== undefined && this.formData.module === undefined) {
           this.formData.module = this.modules.filter(i => i._id === this.existingTaskResponse.module._id)[0];
         }
       });
@@ -175,9 +179,14 @@ export class TaskDetailsComponent implements OnInit {
     this.cs.getAll()
       .subscribe(response => {
         this.columns = response;
+        if (this.columns.length === 0) {
+          this.errorMessage = 'Keine Prozessschritte vorhanden, bitte zuerst anlegen.';
+          this.openSnack();
+          this.formData.column = undefined;
+        }
         // make sure to fill the column in the form if we an have exisiting task
         // it may happen, that getSingleTask is finished before getAllColumns
-        if (this.existingTaskResponse.column !== undefined && this.formData.column === undefined) {
+        if (this.existingTask === true && this.existingTaskResponse.column !== undefined && this.formData.column === undefined) {
           this.formData.column = this.columns.filter(i => i._id === this.existingTaskResponse.column._id)[0];
         }
       });

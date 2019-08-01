@@ -4,7 +4,7 @@
   </mat-form-field>
   <mat-form-field class="input-full-width">
     <input [(ngModel)]="formData.limit" type="number" matInput placeholder="Limit" name="limit" required #limit="ngModel">
-    <mat-hint>Maximale Anzahl an Aufgaben pro Prozessschritt</mat-hint>
+    <mat-hint>Maximale Anzahl an Aufgaben pro Prozessschritt (0 = unbegrenzt)</mat-hint>
   </mat-form-field>
   <button type="submit" class="margin-top" mat-raised-button color="primary" [disabled]="!columnForm.form.valid">Speichern</button>
 </form>

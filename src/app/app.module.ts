@@ -15,7 +15,6 @@ import { MatToolbarModule, MatIconModule, MatSnackBarModule, MatButtonModule, Ma
 import { ModuleRowComponent } from './module-row/module-row.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import { ProcessColumnComponent } from './process-column/process-column.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { ProcessColumnComponent } from './process-column/process-column.componen
     ColumnDetailsComponent,
     ModuleDetailsComponent,
     ModuleRowComponent,
-    ProcessColumnComponent
   ],
   imports: [
     BrowserModule,

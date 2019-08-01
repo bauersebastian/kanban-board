@@ -19,16 +19,19 @@ const httpOptions = {
 export class ModuleService {
   private api = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
-
+  // get all modules
   getAll(): Observable<Module[]> {
     return this.http.get<any[]>(`${this.api}/modules`);
   }
+  // get one module
   getSingle(id: string): Observable<Module> {
     return this.http.get<any>(`${this.api}/modules/${id}`);
   }
+  // remove a module
   remove(id: string): Observable<any> {
     return this.http.delete(`${this.api}/modules/${id}`, {responseType: 'text'});
   }
+  // add a new module
   addModule(module: Module): Observable<any> {
     console.log(module);
     return this.http.post(`${this.api}/modules`, module, httpOptions)

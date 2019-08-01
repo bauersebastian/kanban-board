@@ -27,11 +27,11 @@ export class ModuleRowComponent implements OnInit, OnChanges {
     // the height has to be recalculated on changes
     this.heightOfRow = this.calculateRowHeight();
   }
-
+  // emit the id of the task that should be deleted
   deleteTask(id) {
     this.taskToDelete.emit(id);
   }
-
+  // emit the id of the module that should be deleted
   deleteModule(id) {
     this.moduleToDelete.emit(id);
   }
@@ -48,6 +48,7 @@ export class ModuleRowComponent implements OnInit, OnChanges {
         taskCount = counter;
       }
     }
+    // multiply the rowHeight by the number of tasks
     return rowHeight * taskCount;
   }
 
